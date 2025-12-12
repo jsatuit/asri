@@ -1,0 +1,71 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "asri"
+version = "1.0"
+description = 'Aperture synthesis radar imaging functions package'
+readme = "README.md"
+requires-python = ">=3.6"
+license = "MIT-0"
+licence-files = ["licence.md", "programdata/img/licence.md"]
+keywords = [
+    "Aperture synthesis",
+    "Imaging",
+    "Radar"
+]
+authors = [
+  { name = "Johann Stamm", email = "johann.stamm@eiscat.se" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Science/Research",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+  "Topic :: Scientific/Engineering :: Physics",
+]
+dependencies = [
+    "h5py",
+    "imageio",
+    "matplotlib",
+    "numpy",
+]
+
+[project.urls]
+Documentation = "https://github.com/jsatuit/asri#readme"
+Issues = "https://github.com/jsatuit/asri/issues"
+Source = "https://github.com/jsatuit/asri"
+
+[tool.hatch.version]
+path = "src/asri/__about__.py"
+
+[tool.hatch.envs.types]
+extra-dependencies = [
+  "mypy>=1.0.0",
+]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/asri tests}"
+
+[tool.coverage.run]
+source_pkgs = ["asri", "tests"]
+branch = true
+parallel = true
+
+
+[tool.coverage.paths]
+asri = ["src/asri", "*/asri/src/asri"]
+tests = ["tests", "*/asri/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
