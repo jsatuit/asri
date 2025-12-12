@@ -3,8 +3,11 @@ Code to simulate measurements of an aperture synthesis radar and analyse this da
 The focus of the program is at EISCAT 3D.
 
 This repository started with the replication code for the article [Radar imaging with EISCAT 3D](https://doi.org/10.5194/angeo-39-119-2021).
+The original code can be downloaded from [Dataverse](https://doi.org/10.18710/QRDET2).
 
-
+DOI Published paper: 10.5194/angeo-39-119-2021
+DOI of originally published code: 10.18710/QRDET2
+Author: Johann Stamm
 
 ## License
 
