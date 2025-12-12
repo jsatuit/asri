@@ -29,16 +29,16 @@ trp1 = 10
 trp2 = 100
 i = 1j
 
-alfabetet = [chr(i) for i in range(ord('a'),ord('{'))]+['æ','ø','å']
+alfabeimgtet = [chr(i) for i in range(ord('a'),ord('{'))]+['æ','ø','å']
 
 
 # Where the center of the transmitter array is located
-nullpkt = hstack([ loadtxt('Eiscat3D_transmitter.txt',skiprows=1).reshape(2,-1,order='F')[:,0], 0]).reshape(3,1)
+nullpkt = hstack([ loadtxt('programdata/antpos/Eiscat3D_transmitter.txt',skiprows=1).reshape(2,-1,order='F')[:,0], 0]).reshape(3,1)
 # Locations of all core subarrays
-eiscat3dtpos = loadtxt('e3d_array.txt').T
+eiscat3dtpos = loadtxt('programdata/antpos/e3d_array.txt').T
 eiscat3dtpos = vstack([eiscat3dtpos , zeros([ 1,eiscat3dtpos.shape[1] ]) ])[:,0:109:1]
 # Locations of the outrigger subarrays
-eiscat3drpos = loadtxt('EISCAT3D_receivers.txt',skiprows=1).T.reshape(2,-1,order='F')
+eiscat3drpos = loadtxt('programdata/antpos/EISCAT3D_receivers.txt',skiprows=1).T.reshape(2,-1,order='F')
 eiscat3drpos = vstack([eiscat3drpos , zeros([1,shape(eiscat3drpos)[1] ]) ])-nullpkt
 
 # Some random and testing arrays
@@ -49,8 +49,8 @@ boks = 7.5*array([[-1,1,0],[1,1,0],[-1,-1,0],[1,-1,0]]).T
 null = zeros([3,1])
 
 # The forms of the target. If they produce errors, they can be commented, except for j19, storj and prikk129
-J = flipud(loadtxt('programdata/J.csv')).T
-J_liten = loadtxt('programdata/J_liten.csv')
+J = flipud(loadtxt('programdata/img/J.csv')).T
+J_liten = loadtxt('programdata/img/J_liten.csv')
 prikk = zeros([43,43])
 prikk[21,21] = 1
 prikk129 = zeros([129,129])
@@ -59,11 +59,11 @@ storprikk = zeros([43,43])
 storprikk[20:23,20:23] = 1
 prikk45 = zeros([45,45])
 prikk45[23,23] = 1
-storj = flipud(loadtxt('programdata/storj.csv')[4:-4,0:-1]).T
-j19 = flipud(loadtxt('programdata/j19.csv')).T
+storj = flipud(loadtxt('programdata/img/storj.csv')[4:-4,0:-1]).T
+j19 = flipud(loadtxt('programdata/img/j19.csv')).T
 
 # Loads the aurora image, but currently not available
-nordlys = flipud(imread("programdata/aurora.png")[:-1,:,0]).T/255
+nordlys = flipud(imread("programdata/img/aurora.png")[:-1,:,0]).T/255
 from misc import make_gaussian_blobs,compimag,diffcomb,uniktol
 from plasma import Plasma
 
