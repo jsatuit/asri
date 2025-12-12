@@ -8,7 +8,7 @@ This repository started with the replication code for the article [Radar imaging
 
 ## License
 
-The source code of `asri` is distributed under the terms of the [MIT](https://spdx.org/licenses/MIT.html) license.
+The source code of `asri` is distributed under the terms of the [MIT-no attribution licence](https://spdx.org/licenses/MIT-0.html).
 The licence of the images varies per file. For more information, see [programdata/licence.md](programdata/licence.md).
 
 
