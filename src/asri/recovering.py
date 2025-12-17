@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from asri.radaro3 import Radar,Timer,svddiag,savefig,clf,close,fillagresti,loglog,xlabel,\
+from asri.radaro3 import Radar,svddiag,savefig,clf,close,fillagresti,loglog,xlabel,\
 ylabel,plot,title,subplot,legend,semilogy,show_plots,trp1,trp2,figure,File,asarray,ylim,show_layout_plots,alfabetet
 #import h5py
 from asri.plasma import Plasma
+from asri.verktøy import Stoppeklokke
 from numpy import zeros,nan,sqrt,array,dtype,ndarray,nanmedian
 import numpy
 from datetime import datetime#, datetime.now() gir ut nåværende klokkeslett
@@ -27,7 +28,7 @@ def reccalc(layouts,target,sigma=0.05,h=100e3,o=1,N=[18,20],methods=['MKM'],meth
     """
     # Tidspunktet for når beregningene starta
     tp = datetime.now()
-    with Timer('Preallokering'):
+    with Stoppeklokke('Preallokering'):
         if isinstance(N,int):
             N = [N,N]
         
@@ -49,7 +50,7 @@ def reccalc(layouts,target,sigma=0.05,h=100e3,o=1,N=[18,20],methods=['MKM'],meth
 
         Nv = range(N[0],N[1]+1)
     for n in Nv:
-        with Timer(('runde'+str(n))):
+        with Stoppeklokke(('runde'+str(n))):
             res = (n,n)
             plasma = Plasma(height=h,opening=o,coord='xy',res=res,val=None,show=False,cut=False,farfield=farfield)
             for nl,layout in enumerate(layouts):
@@ -141,7 +142,7 @@ def reccalc(layouts,target,sigma=0.05,h=100e3,o=1,N=[18,20],methods=['MKM'],meth
         f.create_dataset("StøyStdAv", data=sigma )
         f.create_dataset("Nv", data=Nv )
 def plot_results(filnavn,forartikkel=False,smallest_measurement=0.1,dobbelplott=False,midlukj=0.5): # Målinger mer i [1/m³] (¡sukk!)
-    with Timer('Plotting'):
+    with Stoppeklokke('Plotting'):
         
         with File(filnavn,"r") as f:
             methods = asarray(f["methods"])
@@ -310,9 +311,9 @@ if __name__ == '__main__':
 #    layouts= ['singtranscore']
 #    layouts = ['kvadrat','MBS','T2']
 
-#    with Timer('Oppsett'):
+#    with Stoppeklokke('Oppsett'):
 #        show_layout_plots(layouts,farfield=True)
-#    with Timer('Rec_plots'):
+#    with Stoppeklokke('Rec_plots'):
 #        reccalc(layouts,'nordlys',0.05,100e3,1,[8,9],['MKM','TSVD','capon'],[None,2e-2,None],False,True,False)
 #        reccalc(layouts,'nordlys',0.0,100e3,1,[6,7],'svddiag',2e-2,False,True,showsds=True,normcomp=False)
         

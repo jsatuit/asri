@@ -1,17 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Tue Apr  2 17:25:30 2019
-
-@author: jst072
-"""
-
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Mar 21 10:27:33 2019
-
-@author: jst072
 """
 
 import numpy as N
@@ -21,7 +10,8 @@ from numpy.random import randn
 import matplotlib.pyplot as P
 #from mpl_toolkits.mplot3d import Axes3D
 #from radaro import Radar
-from asri.konstanter import c,pi,Timer
+from asri.konstanter import c,pi
+from asri.verktøy import Stoppeklokke
 i = 1j
 
 def krysskorr(freq=230e6,H=100e3,no=100,nv=20,nz=100,vmax=0.01,L=1000,gml=True):
@@ -217,7 +207,7 @@ freq = 230e6
 r21  = N.zeros([len(L),nv,len(H)])
 r21a = N.zeros([len(L),nv,len(H)])
 d    = N.zeros([len(H),nv])
-with Timer('Beregninger'):
+with Stoppeklokke('Beregninger'):
     for i2 in range(len(H)):
         for i1 in range(len(L)):    
             r21[i1,:,i2],r21a[i1,:,i2],d[i2,] = krysskorr(freq,H[i2],no,nv,nz,N.arctan(1500/H[i2])*180/pi,L[i1]/2,gml=False)

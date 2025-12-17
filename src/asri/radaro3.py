@@ -11,7 +11,8 @@ from numpy.linalg import norm,inv,LinAlgError,pinv,svd#,lstsq,solve,det
 from numpy.matlib import repmat
 from numpy.random import standard_normal
 #from numpy.fft import fft2,ifft2,fftshift
-from asri.konstanter import c,pi,Timer#,MatrixDimensionsDoesNotAgree
+from asri.konstanter import c,pi#,MatrixDimensionsDoesNotAgree
+from asri.verktøy import Stoppeklokke
 from matplotlib.pyplot import plot,scatter,xlabel,ylabel,xlim,ylim,clim,legend,axes,hist,\
     figure,colorbar,title,subplot,semilogy,pcolormesh,gca,grid,contourf,loglog,savefig,close,clf,subplots_adjust
 from matplotlib.pyplot import show as show_plots
@@ -1275,7 +1276,7 @@ def rec_plots(layouts,target,sigma=0.05,h=100e3,o=1,N=[18,20],methods=['MKM'],me
     methods - må være liste eller 'svddiag'
             - must be a list or 'svddiag' (if the latter, svddiag is called for the imaging, else Radar.comprec is called)
     """
-    with Timer('Preallokering'):
+    with Stoppeklokke('Preallokering'):
         if isinstance(N,int):
             N = [N,N]
             showcovplot = False
@@ -1298,7 +1299,7 @@ def rec_plots(layouts,target,sigma=0.05,h=100e3,o=1,N=[18,20],methods=['MKM'],me
 
         Nv = range(N[0],N[1]+1)
     for n in Nv:
-        with Timer(('round'+str(n))):
+        with Stoppeklokke(('round'+str(n))):
             res = (n,n)
             plasma = Plasma(height=h,opening=o,coord='xy',res=res,val=None,show=False,cut=False,farfield=farfield)
             for nl,layout in enumerate(layouts):
@@ -1370,7 +1371,7 @@ def rec_plots(layouts,target,sigma=0.05,h=100e3,o=1,N=[18,20],methods=['MKM'],me
                     shatt[nl,n-N[0]] = SIGMA
                     sse[nl,n-N[0]] = SSE
                     mse[nl,n-N[0],:] = array(sim)
-    with Timer('Plotting'):
+    with Stoppeklokke('Plotting'):
         if showcovplot or showcovplot=='save':
 
             for nl,layout in enumerate(layouts):
@@ -1452,7 +1453,7 @@ if __name__ == '__main__':
     layouts = ['singtranscore','singtrans','3transcore','3trans']
 #    layouts = ['singtranscore','singtrans']
 
-    with Timer('Oppsett'):
+    with Stoppeklokke('Oppsett'):
         # This will plot the layout plots in Figure 7
         show_layout_plots(layouts)
         show_plots()

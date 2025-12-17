@@ -37,20 +37,3 @@ class MatrixDimensionsDoesNotAgree(Exception):
         
         
         
-class Timer:
-    """
-    For å måle tidsforbruk
-    To measure time use
-    
-    Kilde:https://stackoverflow.com/questions/5849800/tic-toc-functions-analog-in-python?answertab=votes#tab-top
-    """
-    def __init__(self, name=None):
-        self.name = name
-
-    def __enter__(self):
-        self.tstart = time.time()
-
-    def __exit__(self, type, value, traceback):
-        if self.name:
-            print(('['+str(self.name)+']:'))
-        print(('Det tok '+ str(time.time() - self.tstart) + ' sekunder.'))
