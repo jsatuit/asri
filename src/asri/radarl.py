@@ -5,9 +5,9 @@ Radarligning o.l.
 Radar equation and similar
 """
 
-from konstanter import kB,c,re,amu
+from asri.konstanter import kB,c,re,amu
 from numpy import pi,sin,linspace,array,sqrt,ceil
-from plasma_funcs import debye,vth
+from asri.plasma_funcs import debye,vth
 from math import floor
 import matplotlib.pyplot as plt
 

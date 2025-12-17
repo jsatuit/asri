@@ -11,7 +11,7 @@ from numpy.linalg import norm,inv,LinAlgError,pinv,svd#,lstsq,solve,det
 from numpy.matlib import repmat
 from numpy.random import standard_normal
 #from numpy.fft import fft2,ifft2,fftshift
-from konstanter import c,pi,Timer#,MatrixDimensionsDoesNotAgree
+from asri.konstanter import c,pi,Timer#,MatrixDimensionsDoesNotAgree
 from matplotlib.pyplot import plot,scatter,xlabel,ylabel,xlim,ylim,clim,legend,axes,hist,\
     figure,colorbar,title,subplot,semilogy,pcolormesh,gca,grid,contourf,loglog,savefig,close,clf,subplots_adjust
 from matplotlib.pyplot import show as show_plots

@@ -14,7 +14,7 @@ Created on Tue Feb  5 09:04:03 2019
 """
 
 #import konstanter
-from konstanter import kB,e,eps,me,amu
+from asri.konstanter import kB,e,eps,me,amu
 from numpy import sqrt
 
 def debye(N,T):

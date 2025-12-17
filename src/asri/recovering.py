@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from radaro3 import Radar,Timer,svddiag,savefig,clf,close,fillagresti,loglog,xlabel,\
+from asri.radaro3 import Radar,Timer,svddiag,savefig,clf,close,fillagresti,loglog,xlabel,\
 ylabel,plot,title,subplot,legend,semilogy,show_plots,trp1,trp2,figure,File,asarray,ylim,show_layout_plots,alfabetet
 #import h5py
-from plasma import Plasma
+from asri.plasma import Plasma
 from numpy import zeros,nan,sqrt,array,dtype,ndarray,nanmedian
 import numpy
 from datetime import datetime#, datetime.now() gir ut nåværende klokkeslett

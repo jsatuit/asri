@@ -21,7 +21,7 @@ from numpy.random import randn
 import matplotlib.pyplot as P
 #from mpl_toolkits.mplot3d import Axes3D
 #from radaro import Radar
-from konstanter import c,pi,Timer
+from asri.konstanter import c,pi,Timer
 i = 1j
 
 def krysskorr(freq=230e6,H=100e3,no=100,nv=20,nz=100,vmax=0.01,L=1000,gml=True):
