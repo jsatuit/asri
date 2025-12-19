@@ -1,20 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Calculates plasma parameters
-
-Regner ut plasmaparametre, herunder:
-debyelengde (debye)
-
-
-
-Created on Tue Feb  5 09:04:03 2019
-
-@author: jst072
+Regner ut plasmaparametre
 """
 
 #import konstanter
-from asri.konstanter import kB,e,eps,me,amu
+from asri.konstanter import kB,e,eps,me
 from numpy import sqrt
 
 def debye(N,T):
@@ -66,6 +57,7 @@ def vth(T,m):
     vt - termisk hastighet [m/s], samme størrelser som m
     
     EKSEMPEL
+    >>> from asri.konstanter import amu
     >>> vth(T = 300,m=16*amu)
     394.8441959421232
     """
@@ -73,6 +65,7 @@ def vth(T,m):
     return vt
     
 def _test(skriv_ut=False):
+    
     import doctest
     doctest.testmod(verbose=skriv_ut)
 if __name__ == '__main__':
